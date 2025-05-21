@@ -1,0 +1,17 @@
+.container {
+    width: 50%;
+    min-width: 720px;
+    height: 520px;
+    background-color: rgb(190, 190, 190);
+    border-radius: 12px;
+    margin: 0 6px;
+
+
+    .cards {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        max-height: 310px;
+        overflow-y: auto;
+    }
+}

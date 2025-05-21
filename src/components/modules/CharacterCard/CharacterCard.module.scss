@@ -1,0 +1,48 @@
+.container {
+    border-radius: 12px;
+    border: solid 1px black;
+    width: 270px;
+    height: 90px;
+    margin: 6px;
+    position: relative; 
+    background-color: aliceblue;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out, border-color 0.2s ease-in-out;
+
+    &:hover {
+      box-shadow: 0 0 12px 4px #97ce4c;
+      transform: scale(1.02);
+      border-color: #97ce4c;
+    }
+  
+    .imageContainer {
+      position: relative; 
+      width: 90px;
+      height: 88px;
+      border-radius: 12px 0 0 12px;
+      margin-right: 12px;
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+  
+    .info {
+      height: 100%;
+  
+      .name {
+        font-size: 16px;
+        font-weight: 600;
+      }
+  
+      .additionalInfo {
+        display: flex;
+        flex-direction: column;
+  
+        p {
+          font-size: 14px;
+        }
+      }
+    }
+  }
+  
