@@ -1,4 +1,4 @@
-import { Character, CharacterStatus } from '@/models/characters';
+import { Character, CharacterStatus } from '@/models/characters.model';
 import React from 'react';
 import styles from './CharacterCard.module.scss';
 import Image from 'next/image';
@@ -8,13 +8,16 @@ import { TbDeviceUnknownFilled } from "react-icons/tb";
 import { GiRobotGolem } from "react-icons/gi";
 import { RiAliensFill } from "react-icons/ri";
 import { MdOutlineEmojiPeople } from "react-icons/md";
+import useCharacterStore from '@/store/characterStore';
 
 
 type CharacterCardProps = {
     character: Character;
+    onClick(character: Character) : void;
+    isActive: boolean;
 }
 
-export const CharacterCard = ({ character }: CharacterCardProps) => {
+export const CharacterCard = ({ character, onClick, isActive }: CharacterCardProps) => {
 
     const getStatusIcon  = () => {
         switch (character.status) {
@@ -48,9 +51,9 @@ export const CharacterCard = ({ character }: CharacterCardProps) => {
       );
 
     return (
-        <div className={styles.container}>
+        <div className={`${styles.container} ${isActive ? styles.active : ''}`} onClick={() => onClick(character)}>
             <div className={styles.imageContainer}>
-                <Image src={character.image} layout='fill' alt='character image' objectFit='cover' />
+                <Image src={character.image} layout='fill' alt='character image' objectFit='cover' quality={100}/>
             </div>
             <div className={styles.info}>
                 <p className={styles.name}>{character.name}</p>

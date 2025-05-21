@@ -1,4 +1,4 @@
-import { RequestParams } from "@/models/filters";
+import { RequestParams } from "@/models/filters.model";
 
 export const parseParams = (params: RequestParams) : string => {
     const searchParams = new URLSearchParams();

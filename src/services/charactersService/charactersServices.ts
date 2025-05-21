@@ -1,12 +1,12 @@
 import axios from "axios"
-import { characterRoutes } from "./characterRoutes"
-import { RequestParams } from "@/models/filters"
+import { charactersRoutes } from "./charactersRoutes"
+import { RequestParams } from "@/models/filters.model"
 import { parseParams } from "@/utils/parseParams";
 
-export const characterServices = {
+export const charactersServices = {
     getAll: (params:RequestParams) => {
         const stringParams = parseParams(params)
 
-        return axios.get(characterRoutes.getAll(stringParams));
+        return axios.get(charactersRoutes.getAll(stringParams));
     }
 }

@@ -1,0 +1,12 @@
+.container {
+    width: 100%;
+    min-width: 100vw;
+    height: 100%;
+    background-color: rgb(223, 222, 222);
+    border-radius: 12px;
+    margin: 6px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    opacity: 0.95;
+}

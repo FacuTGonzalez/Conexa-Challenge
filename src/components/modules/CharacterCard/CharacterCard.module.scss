@@ -2,7 +2,7 @@
     border-radius: 12px;
     border: solid 1px black;
     width: 270px;
-    height: 90px;
+    height: 100px;
     margin: 6px;
     position: relative; 
     background-color: aliceblue;
@@ -16,11 +16,17 @@
       transform: scale(1.02);
       border-color: #97ce4c;
     }
+
+    &.active {
+      box-shadow: 0 0 12px 4px #97ce4c;
+      transform: scale(1.02);
+      border-color: #97ce4c;
+    }
   
     .imageContainer {
       position: relative; 
-      width: 90px;
-      height: 88px;
+      width: 100px;
+      height: 98px;
       border-radius: 12px 0 0 12px;
       margin-right: 12px;
       flex-shrink: 0;

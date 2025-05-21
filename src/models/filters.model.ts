@@ -1,4 +1,4 @@
-import { CharacterStatus } from "./characters";
+import { CharacterStatus } from "./characters.model";
 
 export interface RequestParams {
     page: number;

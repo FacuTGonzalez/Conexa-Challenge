@@ -1,15 +1,16 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Character } from '@/models/characters';
-import { RequestParams } from '@/models/filters';
-import { characterServices } from '../charactersServices';
+import { Character } from '@/models/characters.model';
+import { RequestParams } from '@/models/filters.model';
+import { charactersServices } from '../charactersServices';
 
 type UseCharactersResponse = {
   characters: Character[] | null;
   loading: boolean;
   error: string | null;
-  pages: number | null;
+  pages: number | undefined;
   page: number;
+  totalRecords:number | undefined;
   setPage: (page: number) => void;
 };
 
@@ -19,8 +20,9 @@ export const useGetCharacters = ({
   status
 }: RequestParams): UseCharactersResponse => {
   const [characters, setCharacters] = useState<Character[] | null>(null);
-  const [pages, setPages] = useState<number | null>(null);
-  const [loading, setLoading] = useState<boolean>(false);
+  const [totalRecords, setTotalRecords] = useState<number | undefined>(undefined)
+  const [pages, setPages] = useState<number | undefined>(undefined);
+  const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const [page, setPage] = useState<number>(initialPage);
 
@@ -30,13 +32,15 @@ export const useGetCharacters = ({
       setError(null);
 
       try {
-        const response = await characterServices.getAll({ page, status, name });
+        const response = await charactersServices.getAll({ page, status, name });
         setCharacters(response.data.results);
         setPages(response.data.info.pages);
+        setTotalRecords(response.data.info.count)
       } catch (err: any) {
         setError(err?.response?.data?.error || 'Error fetching characters');
         setCharacters(null);
-        setPages(null);
+        setTotalRecords(undefined)
+        setPages(undefined);
       } finally {
         setLoading(false);
       }
@@ -45,5 +49,5 @@ export const useGetCharacters = ({
     fetchCharacters();
   }, [page, name, status]);
 
-  return { characters, loading, error, pages, page, setPage };
+  return { characters, loading, error, pages, page, setPage, totalRecords };
 };
