@@ -29,7 +29,7 @@ const EpisodeSection = () => {
                     </ul>
                 </div>
             </div>
-            <div className='w-4'>
+            <div className={styles.episodes}>
                 <p className='font-bold text-xl pl-3 border-bottom-1 border-bottom-solid'>Character #2 ({secondCharacter?.name}) - Only Episodes</p>
                 <div className={styles.episodesList}>
                     {!bothCharactersSelected && <p>{'Please select characters'}</p>}

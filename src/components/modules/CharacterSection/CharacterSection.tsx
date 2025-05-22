@@ -60,10 +60,10 @@ export const CharacterSection = ({ title, isFirstSection }: SectionProps) => {
             <div>
                 <p className='font-bold text-xl my-2 mx-4'>{title}</p>
             </div>
-            <div className='flex ml-4 my-2'>
-                <InputText className='h-2rem' placeholder='Search' onChange={(e) => setName(e.target.value)} />
-                <div className='pb-2 pl-2'>
-                    <Dropdown className='h-2rem w-12rem flex' options={options}  onChange={(e) => setStatus(e.target.value)} value={status} />
+            <div className='flex flex-wrap ml-4 my-2'>
+                <InputText className='h-2rem mb-1 sm:mr-2' placeholder='Search' onChange={(e) => setName(e.target.value)} />
+                <div className='pb-2'>
+                    <Dropdown placeholder='Select status' className='h-2rem w-14rem flex' options={options}  onChange={(e) => setStatus(e.target.value)} value={status} />
                 </div>
             </div>
             <div className={styles.cards}>

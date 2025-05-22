@@ -11,7 +11,9 @@ export const MainLayout = () => {
         <CharacterSection title='Character #1' isFirstSection />
         <CharacterSection title='Character #2' />
       </div>
-      <EpisodeSection />
+      <div className='w-full'>
+        <EpisodeSection />
+      </div>
     </div>
   )
 }
