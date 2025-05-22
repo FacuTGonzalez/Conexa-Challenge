@@ -1,5 +1,4 @@
 import { useEffect, useMemo, useState } from 'react';
-import { RequestParams } from '@/models/filters.model';
 import { episodesServices } from '../../episodesServices';
 import { Episode } from '@/models/episodes.model';
 
@@ -28,8 +27,9 @@ export const useGetEpisodes = ({
                 const parsedIds = stableId.split(',').filter(Boolean);
                 if (parsedIds.length === 0) return;
                 const response = await episodesServices.getAll({ id: parsedIds });
-                setEpisodes(Array.isArray(response.data)? response.data : [response.data]);
-            } catch (err: any) {
+                setEpisodes(Array.isArray(response.data) ? response.data : [response.data]);
+            } catch (err: unknown) {
+                //@ts-ignore
                 setError(err?.response?.data?.error || 'Error fetching episodes');
                 setEpisodes(null);
 

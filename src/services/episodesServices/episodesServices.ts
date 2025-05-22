@@ -1,6 +1,4 @@
 import axios from "axios"
-import { RequestParams } from "@/models/filters.model"
-import { parseParams } from "@/utils/parseParams";
 import { episodesRoutes } from "./episodesRoutes";
 
 export const episodesServices = {

@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import axios from 'axios';
 import { Character, CharacterStatus } from '@/models/characters.model';
 import { RequestParams } from '@/models/filters.model';
 import { charactersServices } from '../../charactersServices';
@@ -20,7 +19,6 @@ type UseCharactersResponse = {
 export const useGetCharacters = ({
   page: initialPage = 1,
   name: initialName = '',
-  status: initialStatus
 }: RequestParams): UseCharactersResponse => {
   const [characters, setCharacters] = useState<Character[] | null>(null);
   const [totalRecords, setTotalRecords] = useState<number | undefined>(undefined)
@@ -41,7 +39,8 @@ export const useGetCharacters = ({
         setCharacters(response.data.results);
         setPages(response.data.info.pages);
         setTotalRecords(response.data.info.count)
-      } catch (err: any) {
+      } catch (err : unknown) {
+        //@ts-ignore
         setError(err?.response?.data?.error || 'Error fetching characters');
         setCharacters(null);
         setTotalRecords(undefined)

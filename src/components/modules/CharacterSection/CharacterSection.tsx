@@ -2,7 +2,6 @@
 import { useGetCharacters } from '@/services/charactersServices/hooks/useGetCharacters/useGetCharacters';
 import React, { useState } from 'react';
 import styles from './CharacterSection.module.scss';
-import { ProgressSpinner } from 'primereact/progressspinner';
 import { CharacterCard } from '../CharacterCard/CharacterCard';
 import { Paginator, PaginatorPageChangeEvent } from 'primereact/paginator';
 import { Skeleton } from 'primereact/skeleton';

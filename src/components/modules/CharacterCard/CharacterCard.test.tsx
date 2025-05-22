@@ -6,7 +6,8 @@ import { Character, CharacterGender, CharacterStatus } from '@/models/characters
 // Mock de next/image
 jest.mock('next/image', () => ({
   __esModule: true,
-  default: ({ src, alt, objectFit, ...props }: any) => (
+  //@ts-ignore
+  default: ({ src, alt, objectFit, ...props }: unknown) => (
     <img
       src={src}
       alt={alt}
@@ -315,7 +316,7 @@ describe('CharacterCard', () => {
 
       expect(screen.getByTestId('alive-icon')).toBeInTheDocument()
       expect(screen.getByText('Alive')).toBeInTheDocument()
-      
+
       expect(screen.getByTestId('human-icon')).toBeInTheDocument()
       expect(screen.getByText('Human')).toBeInTheDocument()
     })

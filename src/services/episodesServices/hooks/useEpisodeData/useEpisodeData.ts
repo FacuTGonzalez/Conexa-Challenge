@@ -15,18 +15,17 @@ const useEpisodeData = (
   firstCharacter: Character | null,
   secondCharacter: Character | null
 ): EpisodeData => {
-  const firstCharacterId = firstCharacter?.id;
-  const secondCharacterId = secondCharacter?.id;
 
-  const bothCharactersSelected = !!(firstCharacterId && secondCharacterId);
+
+  const bothCharactersSelected = !!(firstCharacter && secondCharacter);
 
   const firstIds = useMemo(() => {
     return firstCharacter ? extractEpisodeIdFromCharacter(firstCharacter) : [];
-  }, [firstCharacterId]);
+  }, [firstCharacter]);
 
   const secondIds = useMemo(() => {
     return secondCharacter ? extractEpisodeIdFromCharacter(secondCharacter) : [];
-  }, [secondCharacterId]);
+  }, [secondCharacter]);
 
   const matchedIds = useMemo(() => {
     if (!bothCharactersSelected) return [];
