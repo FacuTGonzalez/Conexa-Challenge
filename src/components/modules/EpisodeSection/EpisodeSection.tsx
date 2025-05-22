@@ -34,7 +34,6 @@ const EpisodeSection = () => {
                 <p className='font-bold text-xl pl-3 border-bottom-1 border-bottom-solid'>Character #2 ({secondCharacter?.name}) - Only Episodes</p>
                 <div className={styles.episodesList}>
                     {!bothCharactersSelected && <p>{'Please select characters'}</p>}
-
                     <ul>
                         {bothCharactersSelected && secondCharacterEpisodes && secondCharacterEpisodes?.map((e, i) => <li key={i}>{e.episode}-{e.name}-{e.air_date}</li>)}
                     </ul>

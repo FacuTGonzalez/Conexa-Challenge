@@ -32,7 +32,7 @@ const useEpisodeData = (
     if (!bothCharactersSelected) return [];
     return matchEpisodes(firstIds, secondIds);
   }, [bothCharactersSelected, firstIds.join(","), secondIds.join(",")]);
-console.log('matchedIds',matchedIds)
+  
   const episodeParams = useMemo(() => ({ page: 1 }), []);
 
   const { episodes: firstCharacterEpisodes } = useGetEpisodes({

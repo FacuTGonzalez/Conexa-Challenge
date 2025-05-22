@@ -1,6 +1,5 @@
 .container{
     width: 100vw;
-    height: 100vh;
     padding: 12px 0;
     display: flex;
     justify-content: center;
@@ -10,5 +9,11 @@
     .sections {
         display: flex;
         width: 100%;
+        flex-direction: row;
+
+        @media (max-width: 900px) {
+            flex-direction: column;
+            gap:16px
+        }
     }
 }

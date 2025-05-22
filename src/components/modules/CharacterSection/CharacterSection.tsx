@@ -50,7 +50,7 @@ export const CharacterSection = ({ title, isFirstSection }: SectionProps) => {
     };
 
     const options = [
-        { label: 'Select status', value: null},
+        { label: 'All', value: null },
         { label: CharacterStatus.Alive, value: CharacterStatus.Alive },
         { label: CharacterStatus.Dead, value: CharacterStatus.Dead },
         { label: CharacterStatus.Unknown, value: CharacterStatus.Unknown },
@@ -64,7 +64,7 @@ export const CharacterSection = ({ title, isFirstSection }: SectionProps) => {
             <div className='flex ml-4 my-2'>
                 <InputText className='h-2rem' placeholder='Search' onChange={(e) => setName(e.target.value)} />
                 <div className='pb-2 pl-2'>
-                    <Dropdown className='h-2rem w-12rem flex' options={options} placeholder='Select status' onChange={(e) => setStatus(e.target.value)} value={status} />
+                    <Dropdown className='h-2rem w-12rem flex' options={options}  onChange={(e) => setStatus(e.target.value)} value={status} />
                 </div>
             </div>
             <div className={styles.cards}>
