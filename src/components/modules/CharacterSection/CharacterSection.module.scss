@@ -14,10 +14,9 @@
     .cards {
         display: flex;
         flex-wrap: wrap;
-        justify-content: center;
-        flex: 1;
         overflow-y: auto;
-        margin-bottom: 12px;
+        max-height:375px;
+        padding-left: 20px;
     }
     
     .paginatorWrapper {

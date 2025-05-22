@@ -6,7 +6,6 @@ import { parseParams } from "@/utils/parseParams";
 export const charactersServices = {
     getAll: (params:RequestParams) => {
         const stringParams = parseParams(params)
-
         return axios.get(charactersRoutes.getAll(stringParams));
     }
 }

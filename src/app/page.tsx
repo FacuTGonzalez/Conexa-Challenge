@@ -1,3 +1,4 @@
+'use client';
 import { MainLayout } from "@/components/layouts/MainLayout/MainLayout";
 import styles from "./page.module.css";
 

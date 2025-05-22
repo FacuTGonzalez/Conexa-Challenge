@@ -4,9 +4,8 @@ import { parseParams } from "@/utils/parseParams";
 import { episodesRoutes } from "./episodesRoutes";
 
 export const episodesServices = {
-    getAll: ({ id, params }: { id:string[], params: RequestParams }) => {
-        const stringParams = parseParams(params);
+    getAll: ({ id }: { id:string[] }) => {
         const joinedId = id.join(',');
-        return axios.get(episodesRoutes.getAll({params: stringParams, id: joinedId}));
+        return axios.get(episodesRoutes.getAll({ id: joinedId}));
     }
 }

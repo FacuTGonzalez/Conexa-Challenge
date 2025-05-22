@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Character } from '@/models/characters.model';
+import { Character, CharacterStatus } from '@/models/characters.model';
 import { RequestParams } from '@/models/filters.model';
 import { charactersServices } from '../charactersServices';
 
@@ -10,14 +10,17 @@ type UseCharactersResponse = {
   error: string | null;
   pages: number | undefined;
   page: number;
-  totalRecords:number | undefined;
-  setPage: (page: number) => void;
+  totalRecords: number | undefined;
+  status?: CharacterStatus;
+  setPage(page: number): void;
+  setName(name: string): void;
+  setStatus(status: CharacterStatus): void;
 };
 
 export const useGetCharacters = ({
   page: initialPage = 1,
-  name,
-  status
+  name: initialName = '',
+  status: initialStatus
 }: RequestParams): UseCharactersResponse => {
   const [characters, setCharacters] = useState<Character[] | null>(null);
   const [totalRecords, setTotalRecords] = useState<number | undefined>(undefined)
@@ -25,6 +28,8 @@ export const useGetCharacters = ({
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const [page, setPage] = useState<number>(initialPage);
+  const [name, setName] = useState<string>(initialName);
+  const [status, setStatus] = useState<CharacterStatus>();
 
   useEffect(() => {
     const fetchCharacters = async () => {
@@ -49,5 +54,5 @@ export const useGetCharacters = ({
     fetchCharacters();
   }, [page, name, status]);
 
-  return { characters, loading, error, pages, page, setPage, totalRecords };
+  return { characters, loading, error, pages, page, setPage, totalRecords, setName, setStatus, status };
 };

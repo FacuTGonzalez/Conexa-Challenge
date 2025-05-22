@@ -1,3 +1,4 @@
+'use client';
 import { Character, CharacterStatus } from '@/models/characters.model';
 import React from 'react';
 import styles from './CharacterCard.module.scss';

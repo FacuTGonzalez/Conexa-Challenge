@@ -7,17 +7,18 @@ import { CharacterCard } from '../CharacterCard/CharacterCard';
 import { Paginator, PaginatorPageChangeEvent } from 'primereact/paginator';
 import { Skeleton } from 'primereact/skeleton';
 import useCharacterStore from '@/store/characterStore';
-import { Character } from '@/models/characters.model';
+import { Character, CharacterStatus } from '@/models/characters.model';
+import { InputText } from 'primereact/inputtext';
+import { Dropdown } from 'primereact/dropdown';
 
 
 type SectionProps = {
     title: string
-    titlePosition: 'right' | 'left';
     isFirstSection?: boolean;
 }
 
-export const CharacterSection = ({ title, titlePosition, isFirstSection }: SectionProps) => {
-    const { characters, page, loading, totalRecords, setPage } = useGetCharacters({ page: 1 });
+export const CharacterSection = ({ title, isFirstSection }: SectionProps) => {
+    const { characters, page, loading, totalRecords, setPage, setName, setStatus, status } = useGetCharacters({ page: 1 });
     const { firstCharacter, secondCharacter, setFirstCharacter, setSecondCharacter } = useCharacterStore();
     const [rows, setRows] = useState(10);
 
@@ -38,16 +39,33 @@ export const CharacterSection = ({ title, titlePosition, isFirstSection }: Secti
 
     const onCharacterClick = (character: Character) => {
         if (isFirstSection) {
-            setFirstCharacter(character);
+            if (firstCharacter?.id !== character.id) {
+                setFirstCharacter(character);
+            }
         } else {
-            setSecondCharacter(character);
+            if (secondCharacter?.id !== character.id) {
+                setSecondCharacter(character);
+            }
         }
     };
-    
+
+    const options = [
+        { label: 'Select status', value: null},
+        { label: CharacterStatus.Alive, value: CharacterStatus.Alive },
+        { label: CharacterStatus.Dead, value: CharacterStatus.Dead },
+        { label: CharacterStatus.Unknown, value: CharacterStatus.Unknown },
+    ]
+
     return (
         <div className={styles.container}>
-            <div className={`${titlePosition === 'left' ? 'flex flex-start' : 'flex justify-content-end'}`}>
+            <div>
                 <p className='font-bold text-xl my-2 mx-4'>{title}</p>
+            </div>
+            <div className='flex ml-4 my-2'>
+                <InputText className='h-2rem' placeholder='Search' onChange={(e) => setName(e.target.value)} />
+                <div className='pb-2 pl-2'>
+                    <Dropdown className='h-2rem w-12rem flex' options={options} placeholder='Select status' onChange={(e) => setStatus(e.target.value)} value={status} />
+                </div>
             </div>
             <div className={styles.cards}>
                 {loading ? renderSkeletons() : characters && characters.map((c, i) => <CharacterCard isActive={isFirstSection ? c.id === firstCharacter?.id : c.id === secondCharacter?.id} onClick={onCharacterClick} key={i} character={c} />)}

@@ -33,3 +33,48 @@ a {
   color: inherit;
   text-decoration: none;
 }
+
+.p-inputtext {
+  border: 1px solid #ccc; /* Un borde gris neutro */
+  color: var(--text-color);
+  background-color: var(--surface-0);
+}
+
+.p-inputtext:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 0.1rem #97ce4c;
+}
+
+.p-paginator .p-paginator-pages .p-paginator-page.p-highlight {
+  background: #cff59bb0 !important;
+}
+
+.p-dropdown .p-component .p-inputwrapper .p-inputwrapper-filled .p-inputwrapper-focus .p-focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 0.1rem #97ce4c !important;
+}
+
+.p-dropdown:not(.p-disabled):hover  {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 0.1rem #97ce4c !important;
+}
+
+.p-dropdown .p-component .p-focus:hover {
+  outline: none;
+  border:none;
+  padding: 12px;
+  box-shadow: 0 0 0 0.1rem #97ce4c !important;
+}
+
+.p-dropdown:not(.p-disabled).p-focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 0.1rem #97ce4c !important;
+}
+
+.p-dropdown-panel .p-dropdown-items .p-dropdown-item.p-highlight {
+  background-color: #cff59bb0;
+}
