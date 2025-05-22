@@ -1,6 +1,6 @@
 import { extractEpisodeIdFromCharacter, matchEpisodes } from "@/utils/episodesHelper";
 import { useMemo } from "react";
-import { useGetEpisodes } from "./useGetEpisodes";
+import { useGetEpisodes } from "../useGetEpisodes/useGetEpisodes";
 import { Episode } from "@/models/episodes.model";
 import { Character } from "@/models/characters.model";
 
@@ -33,21 +33,17 @@ const useEpisodeData = (
     return matchEpisodes(firstIds, secondIds);
   }, [bothCharactersSelected, firstIds.join(","), secondIds.join(",")]);
   
-  const episodeParams = useMemo(() => ({ page: 1 }), []);
 
   const { episodes: firstCharacterEpisodes } = useGetEpisodes({
     id: bothCharactersSelected ? firstIds : [],
-    params: episodeParams,
   });
 
   const { episodes: secondCharacterEpisodes } = useGetEpisodes({
     id: bothCharactersSelected ? secondIds : [],
-    params: episodeParams,
   });
 
   const { episodes: matchedCharacterEpisodes } = useGetEpisodes({
     id: bothCharactersSelected ? matchedIds : [],
-    params: episodeParams,
   });
 
   return {

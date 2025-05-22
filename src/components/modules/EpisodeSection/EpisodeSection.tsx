@@ -1,9 +1,8 @@
 'use client';
-import React, { useMemo } from 'react'
+import React from 'react'
 import styles from './EpisodeSection.module.scss';
-import useEpisodeData from '@/services/episodeService/hooks/useEpisodeData';
+import useEpisodeData from '@/services/episodesServices/hooks/useEpisodeData/useEpisodeData';
 import useCharacterStore from '@/store/characterStore';
-import { shallow } from 'zustand/shallow';
 
 
 const EpisodeSection = () => {

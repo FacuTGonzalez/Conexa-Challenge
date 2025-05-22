@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { RequestParams } from '@/models/filters.model';
-import { episodesServices } from '../episodesServices';
+import { episodesServices } from '../../episodesServices';
 import { Episode } from '@/models/episodes.model';
 
 type UseEpisodesResponse = {
@@ -11,17 +11,14 @@ type UseEpisodesResponse = {
 
 export const useGetEpisodes = ({
     id,
-    params
 }: {
     id: string[];
-    params: RequestParams;
 }): UseEpisodesResponse => {
     const [episodes, setEpisodes] = useState<Episode[] | null>(null);
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
 
     const stableId = useMemo(() => id.sort().join(','), [id]);
-    const stableParams = useMemo(() => JSON.stringify(params), [params]);
     useEffect(() => {
         const fetchEpisodes = async () => {
             setLoading(true);
@@ -42,7 +39,7 @@ export const useGetEpisodes = ({
         };
 
         fetchEpisodes();
-    }, [stableId, stableParams]);
+    }, [stableId]);
 
     return { episodes, loading, error };
 };

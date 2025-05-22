@@ -1,5 +1,5 @@
 'use client'
-import { useGetCharacters } from '@/services/charactersService/hooks/useGetCharacters';
+import { useGetCharacters } from '@/services/charactersServices/hooks/useGetCharacters/useGetCharacters';
 import React, { useState } from 'react';
 import styles from './CharacterSection.module.scss';
 import { ProgressSpinner } from 'primereact/progressspinner';

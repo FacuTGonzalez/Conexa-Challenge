@@ -9,7 +9,6 @@ import { TbDeviceUnknownFilled } from "react-icons/tb";
 import { GiRobotGolem } from "react-icons/gi";
 import { RiAliensFill } from "react-icons/ri";
 import { MdOutlineEmojiPeople } from "react-icons/md";
-import useCharacterStore from '@/store/characterStore';
 
 
 type CharacterCardProps = {

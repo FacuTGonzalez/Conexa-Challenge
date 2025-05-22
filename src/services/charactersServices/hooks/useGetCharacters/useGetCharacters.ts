@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Character, CharacterStatus } from '@/models/characters.model';
 import { RequestParams } from '@/models/filters.model';
-import { charactersServices } from '../charactersServices';
+import { charactersServices } from '../../charactersServices';
 
 type UseCharactersResponse = {
   characters: Character[] | null;
